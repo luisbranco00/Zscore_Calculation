@@ -5,7 +5,7 @@ from scipy.stats import norm
 
 
 # Read the CSV file with the specified encoding and delimiter
-data = pd.read_csv(r'C:\Users\luisb\Downloads\Be_08092023.csv', encoding='utf-8', delimiter=';')
+data = pd.read_csv(r'Path_to_csv_file', encoding='utf-8', delimiter=';')
 # Get the column names from the DataFrame
 variable_names = data.columns.tolist()
 
@@ -42,7 +42,7 @@ for _, row in data.iterrows():
     age = int(row[variable_names.index('Age_years_A')])
     age_months = int(row[variable_names.index('Age_months_A')])
     height_inch = height
-    height_percentile_file = pd.read_csv(r"C:\Users\luisb\OneDrive\Ambiente de Trabalho\Zscores\CDC\statage.csv", encoding='utf-8', delimiter=';')
+    height_percentile_file = pd.read_csv(r"\Zscores\CDC\statage.csv", encoding='utf-8', delimiter=';')
     id1 =str(row[variable_names.index('ID')])
     if gender == 0:
         gender1 = 2
@@ -109,4 +109,4 @@ for _, row in data.iterrows():
 data_with_spp_df = pd.DataFrame(data_with_spp)
 
 # Save the new DataFrame to a CSV file
-data_with_spp_df.to_csv(r'C:\Users\luisb\Downloads\Zscore_SBP_A.csv', index=False, encoding='utf-8', sep=';')
+data_with_spp_df.to_csv(r'\Zscore_SBP_A.csv', index=False, encoding='utf-8', sep=';')
