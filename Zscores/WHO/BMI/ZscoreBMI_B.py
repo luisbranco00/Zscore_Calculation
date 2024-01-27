@@ -5,7 +5,7 @@ import numpy as np
 
 
 # Read the CSV file with the specified encoding and delimiter
-data = pd.read_csv(r'C:\Users\luisb\Downloads\Be_24072023.csv', encoding='utf-8', delimiter=';')
+data = pd.read_csv(r'Path_to_csv_file', encoding='utf-8', delimiter=';')
 # Get the column names from the DataFrame
 variable_names = data.columns.tolist()
 
@@ -33,9 +33,9 @@ for _, row in data.iterrows():
     bmi = weight / ((height / 100) ** 2)  # Calculate BMI
     
     if gender == 0:
-        bmi_file = pd.read_csv(r"C:\Users\luisb\OneDrive\Ambiente de Trabalho\Zscores\WHO\BMI\bmi-girls-z-who-2007-exp.csv", encoding='utf-8', delimiter=';')
+        bmi_file = pd.read_csv(r"\Zscores\WHO\BMI\bmi-girls-z-who-2007-exp.csv", encoding='utf-8', delimiter=';')
     elif gender == 1:
-        bmi_file = pd.read_csv(r"C:\Users\luisb\OneDrive\Ambiente de Trabalho\Zscores\WHO\BMI\bmi-boys-z-who-2007-exp.csv", encoding='utf-8', delimiter=';')
+        bmi_file = pd.read_csv(r"\Zscores\WHO\BMI\bmi-boys-z-who-2007-exp.csv", encoding='utf-8', delimiter=';')
     matched_rows=[]
     for _, bmi_row in bmi_file.iterrows():
         if int(bmi_row['Month']) == age:
@@ -80,7 +80,7 @@ for _, row in data.iterrows():
 data_with_zscore = pd.DataFrame(data_with_zscore)
 
 # Write the updated data with BMI and Zscore to a new CSV file
-output_file = r'C:\Users\luisb\Downloads\data_with_BMI_zscoreF_B.csv'
+output_file = r'\data_with_BMI_zscoreF_B.csv'
 data_with_zscore.to_csv(output_file, index=False)
 
 print("Zscore calculation and column addition completed.")
