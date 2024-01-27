@@ -7,7 +7,7 @@ import numpy as np
 
 
 # Read the CSV file with the specified encoding and delimiter
-data = pd.read_csv(r'C:\Users\luisb\Downloads\Be_24072023.csv', encoding='utf-8', delimiter=';')
+data = pd.read_csv(r'Path_to_csv_file', encoding='utf-8', delimiter=';')
 # Get the column names from the DataFrame
 variable_names = data.columns.tolist()
 
@@ -29,9 +29,9 @@ for _, row in data.iterrows():
     if age > 120:
         pass
     if gender == 0:
-        weight_file = pd.read_csv(r"C:\Users\luisb\OneDrive\Ambiente de Trabalho\Zscores\WHO\Weight\Weight_Table_Girls.csv", encoding='utf-8', delimiter=';')
+        weight_file = pd.read_csv(r"\Zscores\WHO\Weight\Weight_Table_Girls.csv", encoding='utf-8', delimiter=';')
     elif gender == 1:
-        weight_file = pd.read_csv(r"C:\Users\luisb\OneDrive\Ambiente de Trabalho\Zscores\WHO\Weight\Weight_Table_Boys.csv", encoding='utf-8', delimiter=';')
+        weight_file = pd.read_csv(r"\Zscores\WHO\Weight\Weight_Table_Boys.csv", encoding='utf-8', delimiter=';')
     matched_rows=[]
     for _, weight_row in weight_file.iterrows():
         if int(weight_row['Month']) == age:
@@ -74,7 +74,7 @@ for _, row in data.iterrows():
 data_with_zscore = pd.DataFrame(data_with_zscore)
 
 # Write the updated data with Zscore to a new CSV file
-output_file = r'C:\Users\luisb\Downloads\data_with_zscore_weight_B.csv'
+output_file = r'\data_with_zscore_weight_B.csv'
 data_with_zscore.to_csv(output_file, index=False)
 
 print("Zscore calculation and column addition completed.")
